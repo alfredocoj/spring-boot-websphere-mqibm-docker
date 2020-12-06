@@ -1,0 +1,30 @@
+version: '3'
+
+services: 
+  oracle-db:
+    image: oracleinanutshell/oracle-xe-11g:latest
+    container_name: "oracle-db"
+    ports:
+      - 1521:1521
+      - 5500:5500
+      #- 8081:8080
+    environment: 
+      - ORACLE_ALLOW_REMOTE=true
+
+  wildfly:
+    build: ./docker-wildfly
+    container_name: "wildfly"
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    volumes:
+      - "./deployments:/opt/jboss/wildfly/standalone/deployments"
+  
+  # ActiveMQ:61616 => "admin":"adminactivemq"
+  # ActiveMQWeb:8161 => "admin":"admin"
+  activemq:
+    image: rmohr/activemq:5.10.0
+    container_name: "activemq"
+    ports:
+      - "61616:61616"
+      - "8161:8161"
