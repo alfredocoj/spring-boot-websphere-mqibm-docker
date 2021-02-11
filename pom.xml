@@ -11,7 +11,7 @@
 	<groupId>com.skeleton.spring-datasources</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -115,6 +115,17 @@
 					<password>${deploy.jboss.password}</password>
 				</configuration>
 			</plugin>
+			<!-- Enable Liberty Maven plugin -->
+			<plugin>
+				<groupId>io.openliberty.tools</groupId>
+				<artifactId>liberty-maven-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<appsDirectory>apps</appsDirectory>
+					<installAppPackages>spring-boot-project</installAppPackages>
+				</configuration>
+			</plugin>
+			<!-- End of Liberty Maven plugin -->
 		</plugins>
 	</build>
 

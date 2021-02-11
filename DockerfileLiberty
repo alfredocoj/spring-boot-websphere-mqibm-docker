@@ -1,0 +1,41 @@
+# Stage and thin the application
+FROM openliberty/open-liberty:kernel-java8-openj9-ubi as staging
+
+COPY --chown=1001:0 target/demo-0.0.1-SNAPSHOT.jar \
+                    /staging/demo-0.0.1-SNAPSHOT.jar
+
+RUN springBootUtility thin \
+ --sourceAppPath=/staging/demo-0.0.1-SNAPSHOT.jar \
+ --targetThinAppPath=/staging/thin-demo-0.0.1-SNAPSHOT.jar \
+ --targetLibCachePath=/staging/lib.index.cache
+
+# Build the image
+FROM openliberty/open-liberty:kernel-java8-openj9-ubi
+
+ARG VERSION=1.0
+ARG REVISION=SNAPSHOT
+
+LABEL \
+  org.opencontainers.image.authors="Alfredo Junior" \
+  org.opencontainers.image.vendor="Open Liberty" \
+  org.opencontainers.image.url="local" \
+  org.opencontainers.image.source="https://github.com/OpenLiberty/guide-spring-boot" \
+  org.opencontainers.image.version="$VERSION" \
+  org.opencontainers.image.revision="$REVISION" \
+  vendor="Open Liberty" \
+  name="demo app" \
+  version="$VERSION-$REVISION" \
+  summary="The demo application from the Spring Boot guide" \
+  description="This image contains the hello application running with the Open Liberty runtime."
+
+COPY docker-wildfly/ojdbc/ojdbc7.jar /opt/jdbc/ojdbc7.jar
+COPY server.xml /opt/ol/wlp/templates/servers/springBoot2/server.xml
+RUN cp /opt/ol/wlp/templates/servers/springBoot2/server.xml /config/server.xml
+
+COPY --chown=1001:0 --from=staging /staging/lib.index.cache /lib.index.cache
+COPY --chown=1001:0 --from=staging /staging/thin-demo-0.0.1-SNAPSHOT.jar \
+                    /config/dropins/spring/thin-demo-0.0.1-SNAPSHOT.jar
+
+RUN configure.sh
+
+## docker run -p 9080:9080 -p 9443:9443 -p 9082:9082 openliberty-test

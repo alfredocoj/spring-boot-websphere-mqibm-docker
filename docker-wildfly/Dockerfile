@@ -30,7 +30,7 @@ RUN /opt/config/execute.sh add-activemq-rar.cli
 # cleanup
 RUN rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history
 
-COPY target/demo-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/demo-0.0.1-SNAPSHOT.war
+COPY target/demo-0.0.1-SNAPSHOT1.war /opt/jboss/wildfly/standalone/deployments/demo-0.0.1-SNAPSHOT.war
 #ENV JAVA_OPTS="-Xms1G -Xmx1G -Djava.util.logging.config.file=logging.properties -Djava.security.auth.login.config=/opt/activemq/conf/login.config -Dcom.sun.management.jmx remote -Djava.awt.headless=true -Djava.io.tmpdir=/opt/activemq/tmp -Dactivemq.classpath=/opt/activemq/conf -Dactivemq.home=/opt/activemq -Dactivemq.base=/opt/activemq -Dactivemq.conf=/opt/activemq/conf -Dactivemq.data=/opt/activemq/data --add-modules java.se.ee"
 # automatically launch the standalone configuration
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "-c", "standalone-full.xml"]
