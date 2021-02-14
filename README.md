@@ -1,12 +1,17 @@
 ## DEMO SPRING BOOT WITH WEBSPHERE OR WILDFLY
 
-### Commands
+A demo application of spring boot with websphere and mq-ibm or wildfly and active-mq.
+
+### Commands to build
 
 ```
-docker build -t openliberty-test -f DockerfileLiberty .
+docker build -t openliberty-app -f DockerfileLiberty .
+```
 
-docker run -p 9080:9080 -p 9443:9443 -p 9082:9082 --name="demo-liberty" openliberty-test
-
+### Commands to run
+```
+docker-compose up oracle-db mq-ibm
+docker-compose up --build websphere
 ```
 
 ### REFERENCES
