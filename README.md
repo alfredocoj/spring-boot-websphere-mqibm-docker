@@ -20,3 +20,13 @@ https://github.com/ibm-cloud-architecture/cloudpak-for-applications/tree/spring
 https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.4.0/configuring/java/config_jvmserver_liberty.html
 
 https://blogs.oracle.com/imc/jdeveloper-12c-ora-01882:-timezone-region-not-found
+
+https://www.baeldung.com/spring-boot-thin-jar
+
+https://www.ibm.com/support/knowledgecenter/SSGMCP_5.4.0/configuring/java/serverxmljvm.html?view=embed
+
+https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.4.0/configuring/java/config_jvmserver_liberty.html
+
+https://openliberty.io/docs/20.0.0.12/reference/config/dataSource.html
+
+https://developer.ibm.com/components/ibm-mq/tutorials/mq-jms-application-development-with-spring-boot/

@@ -19,10 +19,20 @@ services:
     container_name: "openliberty-app"
     ports:
       - 9080:9080
-      - 9443:9443
+      - 9444:9443
     environment:
       - JAVA_OPTS=-Duser.timezone=GMT
       - TZ=GMT
+
+  mq-ibm:
+    image: ibmcom/mq
+    container_name: mq
+    ports:
+      - 1414:1414
+      - 9443:9443
+    environment:
+      - LICENSE=accept
+      - MQ_QMGR_NAME=QM1
 
 #  wildfly:
 #    build: ./docker-wildfly

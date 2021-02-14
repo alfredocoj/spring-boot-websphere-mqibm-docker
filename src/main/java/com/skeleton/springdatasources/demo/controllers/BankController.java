@@ -11,24 +11,24 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1/")
+@RequestMapping("/ws/v1/banks")
 public class BankController {
 
     @Autowired
     private BankService service;
 
 
-    @RequestMapping(value="banks",method= RequestMethod.POST)
+    @RequestMapping(method= RequestMethod.POST)
     public Object create(@RequestBody Bank bank) {
         return new ResponseEntity<>(service.save(bank), HttpStatus.CREATED);
     }
 
-    @RequestMapping(value={"banks"}, method=RequestMethod.GET)
+    @RequestMapping(method=RequestMethod.GET)
     public Object read() {
         return new ResponseEntity<List<Bank>>(service.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value={"banks/{id}"}, method=RequestMethod.GET)
+    @RequestMapping(value={"/{id}"}, method=RequestMethod.GET)
     public Object read(@PathVariable Long id) {
         Optional<Long> op = Optional.ofNullable(id);
 
@@ -38,13 +38,13 @@ public class BankController {
         return new ResponseEntity<String>("Não encontrado", HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @RequestMapping(value="banks", method=RequestMethod.PUT)
+    @RequestMapping( method=RequestMethod.PUT)
     public Object update(@RequestBody Bank bank) {
         service.update(bank);
         return new ResponseEntity<Bank>(bank, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="banks/{id}", method=RequestMethod.DELETE)
+    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     public Object delete(@PathVariable Long id) {
         service.delete(id);
         return new ResponseEntity<Object>("Bank deletado com sucesso", HttpStatus.OK);
