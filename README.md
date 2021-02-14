@@ -22,6 +22,19 @@ docker-compose up oracle-db activemq
 docker-compose up wildfly
 ```
 
+## URLs
+
+### WS
+```
+http://localhost:9080/v1/banks/
+```
+
+### MQ
+
+```
+http://localhost:9080/mq/v1/send
+http://localhost:9080/mq/v1/recv
+```
 
 ### REFERENCES
 
