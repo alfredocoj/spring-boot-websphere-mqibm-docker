@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 # docker
-docker-wildfly/target
+docker/wildfly/target
 deployments/
 
 ### STS ###

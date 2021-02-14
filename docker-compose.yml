@@ -35,7 +35,7 @@ services:
       - MQ_QMGR_NAME=QM1
 
   wildfly:
-    build: ./docker-wildfly
+    build: docker/wildfly
     container_name: "wildfly"
     ports:
       - "8080:8080"
