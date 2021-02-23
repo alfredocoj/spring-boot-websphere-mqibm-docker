@@ -61,3 +61,7 @@ https://developer.ibm.com/components/ibm-mq/tutorials/mq-jms-application-develop
 https://github.com/nuviosoftware/custom-ibm-mq/blob/master/Dockerfile
 
 https://www.youtube.com/watch?v=IxR5G7DEyfU
+
+https://stackoverflow.com/questions/63999792/cannot-debug-websphere-application-server-inside-of-a-docker-container-using-int
+
+https://www.ibm.com/support/knowledgecenter/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/t_creating_remote_server_docker.html
