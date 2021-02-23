@@ -20,16 +20,23 @@ services:
     ports:
       - 9080:9080
       - 9444:9443
+      - 7777:7777
     environment:
       - JAVA_OPTS=-Duser.timezone=GMT
       - TZ=GMT
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7777
 
   mq-ibm:
-    image: ibmcom/mq
+    #image: ibmcom/mq:latest
+    build:
+      dockerfile: DockerfileMQ
+      context: .
     container_name: mq
     ports:
       - 1414:1414
       - 9443:9443
+    volumes:
+      - "./docker/mq/20-config.mqsc:/etc/mqm/20-config.mqsc"
     environment:
       - LICENSE=accept
       - MQ_QMGR_NAME=QM1

@@ -26,7 +26,7 @@ docker-compose up wildfly
 
 ### WS
 ```
-http://localhost:9080/v1/banks/
+http://localhost:9080/ws/v1/banks
 ```
 
 ### MQ
@@ -57,3 +57,7 @@ https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.4.0/configuring/java/con
 https://openliberty.io/docs/20.0.0.12/reference/config/dataSource.html
 
 https://developer.ibm.com/components/ibm-mq/tutorials/mq-jms-application-development-with-spring-boot/
+
+https://github.com/nuviosoftware/custom-ibm-mq/blob/master/Dockerfile
+
+https://www.youtube.com/watch?v=IxR5G7DEyfU

@@ -1,0 +1,3 @@
+FROM ibmcom/mq:9.2.1.0-r1-amd64 AS mq-dev-server
+COPY docker/mq/20-config.mqsc /etc/mqm/20-config.mqsc
+ENTRYPOINT ["runmqdevserver"]
