@@ -11,7 +11,7 @@ docker build -t openliberty-app -f DockerfileLiberty .
 
 ### Commands to run
 ```
-docker-compose up oracle-db mq-ibm
+docker-compose up --build oracle-db mq-ibm
 docker-compose up --build websphere
 ```
 
@@ -20,6 +20,13 @@ docker-compose up --build websphere
 ```
 docker-compose up oracle-db activemq
 docker-compose up wildfly
+```
+## CONSOLES
+
+### IBM MQ
+
+```
+https://localhost:9443/ibmmq/console
 ```
 
 ## URLs
@@ -65,3 +72,13 @@ https://www.youtube.com/watch?v=IxR5G7DEyfU
 https://stackoverflow.com/questions/63999792/cannot-debug-websphere-application-server-inside-of-a-docker-container-using-int
 
 https://www.ibm.com/support/knowledgecenter/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/t_creating_remote_server_docker.html
+
+https://openliberty.io/docs/21.0.0.2/log-trace-configuration.html
+
+https://www.ibm.com/support/knowledgecenter/SSD28V_liberty/com.ibm.websphere.wlp.core.doc/ae/twlp_ui_setup.html#twlp_ui_setup__uiinstall
+
+https://www.ibm.com/support/knowledgecenter/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/video_transcript_ui_setup.html
+
+https://websphereusergroup.co.uk/wug/presentations/40/liberty-docker-wug.pdf
+
+https://www.ibm.com/support/knowledgecenter/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_ui_login.html

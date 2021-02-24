@@ -5,10 +5,12 @@
     <featureManager>
         <!--<feature>jpaContainer-2.1</feature>-->
         <!--        <feature>bells-1.0</feature>-->
+        <feature>batchManagement-1.0</feature>
+        <feature>adminCenter-1.0</feature>
+        <feature>websocket-1.1</feature>
         <feature>springBoot-2.0</feature>
         <feature>servlet-4.0</feature>
         <feature>jsp-2.3</feature>
-<!--        <feature>webSocket-1.1</feature>-->
         <feature>transportSecurity-1.0</feature>
         <feature>jaxrs-2.1</feature>
         <feature>jsonp-1.1</feature>
@@ -18,13 +20,29 @@
         <feature>mpConfig-1.4</feature>
     </featureManager>
 
-<!--    <webApplication location="demo-0.0.1-SNAPSHOT.war" contextRoot="/demo-0.0.1-SNAPSHOT" />-->
+<!--    <quickStartSecurity userName="admin" userPassword="adminpwd"/>-->
+    <basicRegistry id="basic" realm="basicRealm">
+        <user name="admin" password="adminpass"/>
+        <user name="reader" password="readerpwd"/>
+    </basicRegistry>
+    <!-- Assign 'admin' to Administrator -->
+    <administrator-role>
+        <user>admin</user>
+    </administrator-role>
+
+    <reader-role>
+        <user>reader</user>
+    </reader-role>
+
+<!--    <keyStore id="defaultKeyStore" password="Liberty" />-->
+
+    <!--    <webApplication location="demo-0.0.1-SNAPSHOT.war" contextRoot="/demo-0.0.1-SNAPSHOT" />-->
     <springBootApplication id="demo-0.0.1-SNAPSHOT"
                            location="thin-demo-0.0.1-SNAPSHOT-0.1.0.jar"
-                           name="demo-0.0.1-SNAPSHOT" />
+                           name="demo-0.0.1-SNAPSHOT"/>
     <mpMetrics authentication="false"/>
 
-    <logging traceSpecification="com.ibm.ws.microprofile.health.*=all" />
+    <logging traceSpecification="com.ibm.ws.microprofile.health.*=all"/>
 
     <dataSource id="demoDS" jndiName="demoDS">
         <jdbcDriver libraryRef="OracleLib"/>
@@ -35,14 +53,18 @@
         <file name="/opt/jdbc/ojdbc7.jar"/>
     </library>
 
+    <variable name="default.http.port" defaultValue="9080"/>
+    <variable name="default.https.port" defaultValue="9443"/>
+
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
-    <httpEndpoint id="defaultHttpEndpoint"
-                  httpPort="9080"
-                  httpsPort="9443" />
+    <httpEndpoint host="*"
+                  id="defaultHttpEndpoint"
+                  httpPort="${default.http.port}"
+                  httpsPort="${default.https.port}"/>
 
 
     <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
-    <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+    <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
     <!-- Automatically expand WAR files and EAR files -->
     <applicationManager autoExpand="true"/>
 

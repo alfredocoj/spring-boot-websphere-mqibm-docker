@@ -18,13 +18,21 @@ services:
     #image: openliberty-test:latest
     container_name: "openliberty-app"
     ports:
-      - 9080:9080
-      - 9444:9443
-      - 7777:7777
+      - 9080:9080 # http
+      - 9060:9060 # console
+      - 9444:9443 # https
+      - 7777:7777 # debug
+    #volumes:
+    #- "./docker/target:/config/dropins"
     environment:
-      - JAVA_OPTS=-Duser.timezone=GMT
+      - JAVA_OPTS=-Duser.timezone=GMT -Ddefault.client.encoding=UTF-8
       - TZ=GMT
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7777
+#      - WLP_LOGGING_MESSAGE_FORMAT=json
+#      - WLP_LOGGING_CONSOLE_FORMAT=json
+#      - WLP_LOGGING_CONSOLE_SOURCE=message,trace,accessLog,ffdc
+#      - WLP_LOGGING_MESSAGE_SOURCE=
+#      - WLP_LOGGING_CONSOLE_LOGLEVEL=info
 
   mq-ibm:
     #image: ibmcom/mq:latest
@@ -35,11 +43,13 @@ services:
     ports:
       - 1414:1414
       - 9443:9443
-    volumes:
-      - "./docker/mq/20-config.mqsc:/etc/mqm/20-config.mqsc"
+#    volumes:
+#      - "./docker/mq/directory:/opt/mqm"
     environment:
       - LICENSE=accept
       - MQ_QMGR_NAME=QM1
+      - MQ_ADMIN_PASSWORD=passw0rd # user=admin
+      - MQ_ENABLE_METRICS=true
 
   wildfly:
     build: docker/wildfly
