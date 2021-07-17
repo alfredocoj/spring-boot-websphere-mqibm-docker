@@ -20,7 +20,7 @@
         <feature>mpConfig-1.4</feature>
     </featureManager>
 
-<!--    <quickStartSecurity userName="admin" userPassword="adminpwd"/>-->
+    <!--    <quickStartSecurity userName="admin" userPassword="adminpwd"/>-->
     <basicRegistry id="basic" realm="basicRealm">
         <user name="admin" password="adminpass"/>
         <user name="reader" password="readerpwd"/>
@@ -34,7 +34,7 @@
         <user>reader</user>
     </reader-role>
 
-<!--    <keyStore id="defaultKeyStore" password="Liberty" />-->
+    <!--    <keyStore id="defaultKeyStore" password="Liberty" />-->
 
     <!--    <webApplication location="demo-0.0.1-SNAPSHOT.war" contextRoot="/demo-0.0.1-SNAPSHOT" />-->
     <springBootApplication id="demo-0.0.1-SNAPSHOT"

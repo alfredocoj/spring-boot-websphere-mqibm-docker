@@ -1,6 +1,6 @@
 version: '3'
 
-services: 
+services:
   oracle-db:
     image: oracleinanutshell/oracle-xe-11g:latest
     container_name: "oracle-db"
@@ -23,16 +23,16 @@ services:
       - 9444:9443 # https
       - 7777:7777 # debug
     #volumes:
-    #- "./docker/target:/config/dropins"
+    #- "W:fds/configs:/prime1/was/fdsfsdf"
     environment:
       - JAVA_OPTS=-Duser.timezone=GMT -Ddefault.client.encoding=UTF-8
       - TZ=GMT
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7777
-#      - WLP_LOGGING_MESSAGE_FORMAT=json
-#      - WLP_LOGGING_CONSOLE_FORMAT=json
-#      - WLP_LOGGING_CONSOLE_SOURCE=message,trace,accessLog,ffdc
-#      - WLP_LOGGING_MESSAGE_SOURCE=
-#      - WLP_LOGGING_CONSOLE_LOGLEVEL=info
+  #      - WLP_LOGGING_MESSAGE_FORMAT=json
+  #      - WLP_LOGGING_CONSOLE_FORMAT=json
+  #      - WLP_LOGGING_CONSOLE_SOURCE=message,trace,accessLog,ffdc
+  #      - WLP_LOGGING_MESSAGE_SOURCE=
+  #      - WLP_LOGGING_CONSOLE_LOGLEVEL=info
 
   mq-ibm:
     #image: ibmcom/mq:latest
@@ -43,8 +43,8 @@ services:
     ports:
       - 1414:1414
       - 9443:9443
-#    volumes:
-#      - "./docker/mq/directory:/opt/mqm"
+    #    volumes:
+    #      - "./docker/mq/directory:/opt/mqm"
     environment:
       - LICENSE=accept
       - MQ_QMGR_NAME=QM1
@@ -60,8 +60,8 @@ services:
     volumes:
       - "./deployments:/opt/jboss/wildfly/standalone/deployments"
 
-##   ActiveMQ:61616 => "admin":"adminactivemq"
-##   ActiveMQWeb:8161 => "admin":"admin"
+  ##   ActiveMQ:61616 => "admin":"adminactivemq"
+  ##   ActiveMQWeb:8161 => "admin":"admin"
   activemq:
     image: rmohr/activemq:5.10.0
     container_name: "activemq"
