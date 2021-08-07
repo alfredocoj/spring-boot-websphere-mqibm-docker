@@ -90,3 +90,7 @@ https://websphereusergroup.co.uk/wug/presentations/40/liberty-docker-wug.pdf
 https://www.ibm.com/support/knowledgecenter/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_ui_login.html
 
 https://hub.docker.com/_/websphere-liberty
+
+https://medium.com/assertqualityassurance/como-construir-e-testar-uma-api-em-java-utilizando-o-postman-baae69d8b8aa
+
+https://www.baeldung.com/javax-validation
